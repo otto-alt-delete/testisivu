@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satunnaisvideo-kanava</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    iframe {
+      width: 80%;
+      height: 450px;
+      margin: 20px auto;
+      border: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Satunnaisvideokanava</h1>
+  <iframe id="videoPlayer" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+  <br>
+  <button id="changeChannel">Vaihda kanavaa</button>
+
+  <script>
+    // 2. JavaScript-osuus
+    const videoIds = [
+      'https://www.youtube.com/watch?v=s3GMljOz12M&t=410s', // Vaihda nämä omiksi YouTube-videotunnuksiksi
+      'https://www.youtube.com/watch?v=6kZU1xfo-fk',
+      'https://www.youtube.com/watch?v=ZA3NZCHfw50'
+
+    ];
+
+    // Funktio satunnaisen videon lataamiseksi
+    function changeChannel() {
+      const randomIndex = Math.floor(Math.random() * videoIds.length);
+      const videoId = videoIds[randomIndex];
+      const videoPlayer = document.getElementById('videoPlayer');
+      videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    // Nappi päivittää videon
+    document.getElementById('changeChannel').addEventListener('click', changeChannel);
+  </script>
+</body>
+</html>
